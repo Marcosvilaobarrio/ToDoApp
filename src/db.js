@@ -2,11 +2,7 @@ const {Pool} = require('pg')
 const {db} = require('./config.js')
 
 const pool = new Pool({
-    user: db.user,
-    password: db.password,
-    host: db.host,
-    port: db.port,
-    database: db.database
-});
+    connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+  })
 
 module.exports = pool
